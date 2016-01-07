@@ -5,10 +5,14 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      'public/components/angular/angular.min.js',
+      // bower:js
+      'public/components/jquery/dist/jquery.js',
+      'public/components/angular/angular.js',
+      // endbower
       'public/components/angular-mocks/angular-mocks.js',
-      'public/app.js',
+      'public/*.js',
       'public/controllers/*.js',
+      'public/services/*.js',
       'test/client/*Spec.js'
     ],
     exclude: [

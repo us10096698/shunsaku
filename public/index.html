@@ -2,10 +2,12 @@
 <html lang="en" ng-app='myapp'>
 <head>
   <meta charset="UTF-8">
-  <script src="components/angular/angular.min.js"></script>
-  <script src="app.js"></script>
-  <script src="controllers/helloCtrl.js"></script>
+  <!-- bower:css -->
+  <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
+  <!-- inject:css -->
   <link rel="stylesheet" href="css/myapp.css">
+  <!-- endinject -->
 
   <title>template app</title>
 
@@ -15,5 +17,15 @@
   <button id="call" ng-click="vm.setTagline('Did you call me?')">call</button>
   <button id="ajaxcall" ng-click="vm.process('Did you call me?')">ajax call</button>
   <p id='tagline'>{{ vm.tagline }}</p>
+
+  <!-- bower:js -->
+  <script src="components/jquery/dist/jquery.js"></script>
+  <script src="components/angular/angular.js"></script>
+  <!-- endbower -->
+  <!-- inject:js -->
+  <script src="app.js"></script>
+  <script src="controllers/helloCtrl.js"></script>
+  <!-- endinject -->
+
 </body>
 </html>
