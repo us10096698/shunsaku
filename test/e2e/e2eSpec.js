@@ -13,6 +13,7 @@ describe('GET /', function() {
 
   beforeEach(function() {
     browser.get('/');
+    disableAnimation();
   });
 
   it('should return index page with greeting', function() {
@@ -28,4 +29,11 @@ describe('GET /', function() {
     element(by.id('ajaxcall')).click();
     expect(element(by.id('tagline')).getText()).toEqual('processed: Did you call me?');
   });
+
+  function disableAnimation() {
+    $('body').allowAnimations(false);
+    browser.executeScript("document.body.className += ' notransition';");
+  }
+
 });
+
