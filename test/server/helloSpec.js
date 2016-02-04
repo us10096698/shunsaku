@@ -1,5 +1,5 @@
 'use strict';
-var getRoot = require('../../app/routes/getRoot');
+var hello = require('../../app/api/hello');
 
 describe('hello API', function() {
   var req, res;
@@ -19,7 +19,7 @@ describe('hello API', function() {
 
   it('GET / should return response with a processed message', function() {
     req = {query: {message: 'hello'}};
-    getRoot(req, res);
-    expect(res.send).toHaveBeenCalledWith('processed: hello');
+    hello.say(req, res);
+    expect(res.send).toHaveBeenCalledWith('Say hello from server! Your query: hello');
   });
 });

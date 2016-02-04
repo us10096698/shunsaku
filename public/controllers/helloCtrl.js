@@ -15,7 +15,7 @@ function HelloController($http) {
 
   vm.process = function(message) {
     var config = {'params': {'message': message}};
-    $http.get('/api/hello', config)
+    $http.get('/api/hello/say', config)
       .then(function callback(res) {
         vm.setTagline(res.data);
       });

@@ -19,7 +19,7 @@ describe('GET /', function() {
 
   it('should update tagline when AJAX call button clicked', function() {
     element(by.id('ajaxcall')).click();
-    expect(element(by.id('tagline')).getText()).toEqual('processed: Did you call me?');
+    expect(element(by.id('tagline')).getText()).toEqual('Say hello from server! Your query: Did you call me?');
   });
 
   function disableAnimation() {

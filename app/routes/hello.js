@@ -3,8 +3,8 @@
 var express = require('express');
 var router = express.Router();
 
-var getRoot = require('./getRoot');
+var helloAPI = require('../api/hello');
 
-router.get('/', getRoot);
+router.get('/say', helloAPI.say);
 
 module.exports = router;

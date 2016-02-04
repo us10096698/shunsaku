@@ -26,9 +26,9 @@ describe('HelloController', function() {
     var $scope = {};
     var controller = $controller('HelloController', {'$scope' : $scope });
 
-    $httpBackend.expectGET('/api/hello?message=hello').respond('processed: hello');
-    controller.process('hello');
+    $httpBackend.expectGET('/api/hello/say?message=fake').respond('fake');
+    controller.process('fake');
     $httpBackend.flush();
-    expect(controller.tagline).toBe('processed: hello');
+    expect(controller.tagline).toBe('fake');
   });
 });
