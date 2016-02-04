@@ -3,14 +3,6 @@ var server = require('../../server');
 
 describe('GET /', function() {
 
-  beforeAll(function() {
-    server.start();
-  });
-
-  afterAll(function() {
-    server.close();
-  });
-
   beforeEach(function() {
     browser.get('/');
     disableAnimation();

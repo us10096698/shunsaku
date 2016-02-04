@@ -7,6 +7,7 @@ var $ = require('gulp-load-plugins')();
 var Karma = require('karma').Server;
 var server = require( __dirname + '/server.js');
 var wiredep = require('wiredep').stream;
+var runSequence = require('run-sequence');
 
 gulp.task('start_server', function() {
   server.start();
@@ -18,12 +19,24 @@ gulp.task('close_server', function() {
 
 gulp.task('webdriver_update', $.protractor.webdriver_update);
 
+gulp.task('build', ['sass', 'wiredep'], function() {
+  console.log('Build finished.');
+});
+
+gulp.task('e2e', function() {
+  runSequence('start_server', 'protractor', 'close_server');
+});
+
 gulp.task('protractor', ['webdriver_update'], function() {
   return gulp.src(['./test/e2e/*Spec.js'])
     .pipe($.protractor.protractor({
       configFile: __dirname + '/protractor.conf.js'
     }))
     .on('error', function(e) {throw e;});
+});
+
+gulp.task('unit', function() {
+  runSequence('jasmine', 'karma');
 });
 
 gulp.task('karma-build', function(){
@@ -50,7 +63,8 @@ gulp.task('karma', ['karma-build'], function(done) {
   new Karma({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
-  }, done).start();
+  }).start();
+  done();
 });
 
 gulp.task('jasmine', function() {
