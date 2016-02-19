@@ -1,0 +1,7 @@
+---
+applications:
+- name: myapp
+  memory: 128M
+  command: npm start
+  env:
+    NODE_ENV: production

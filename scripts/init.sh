@@ -11,6 +11,7 @@ cd `dirname $0`/..
 APPNAME=$1
 
 for file in "package.json\
+  manifest.yml\
   bower.json\
   public/index.html\
   public/app.js\

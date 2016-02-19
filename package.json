@@ -2,13 +2,13 @@
   "name": "myapp",
   "description": "a minimum-viable express+angular app with tests",
   "scripts": {
+    "prestart": "bower install -p",
+    "start": "node scripts/start.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "us10096698",
   "license": "MIT",
   "devDependencies": {
-    "body-parser": "^1.14.1",
-    "bower": "^1.6.3",
     "eslint-config-angular": "^0.4.0",
     "eslint-plugin-angular": "^0.13.0",
     "gulp": "^3.9.0",
@@ -28,6 +28,7 @@
     "wiredep": "^3.0.0"
   },
   "dependencies": {
+    "bower": "^1.6.3",
     "method-override": "^2.3.5",
     "body-parser": "^1.14.1",
     "express": "^4.13.3"
