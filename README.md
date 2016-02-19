@@ -1,5 +1,6 @@
 Boilerplate
 ===
+[![Build Status](https://travis-ci.org/us10096698/boilerplate.svg?branch=master)](https://travis-ci.org/us10096698/boilerplate)
 
 A minimum-viable Node.js(Express) + Angular webapp template with tests
 + [Pivotal Tracker project page](https://www.pivotaltracker.com/n/projects/1461010)
