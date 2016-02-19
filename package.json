@@ -20,14 +20,16 @@
     "gulp-sass": "^2.1.1",
     "jasmine-core": "^2.3.4",
     "karma": "^0.13.14",
-    "karma-chrome-launcher": "^0.2.1",
     "karma-jasmine": "^0.3.6",
-    "method-override": "^2.3.5",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.4",
     "request": "^2.65.0",
     "run-sequence": "^1.1.5",
     "wiredep": "^3.0.0"
   },
   "dependencies": {
+    "method-override": "^2.3.5",
+    "body-parser": "^1.14.1",
     "express": "^4.13.3"
   }
 }
