@@ -5,21 +5,17 @@ describe('hello API', function() {
   var req, res;
 
   beforeEach( function() {
-    req = {};
     res = {
-      send: jasmine.createSpy().and.callFake(function(msg){
-        return this;
-      })
+      send: function() {}
     };
-  });
-
-  afterEach(function() {
-    expect(res.send.calls.count()).toEqual(1);
+    spyOn(res, 'send');
   });
 
   it('GET / should return response with a processed message', function() {
     req = {query: {message: 'hello'}};
     hello.say(req, res);
+
     expect(res.send).toHaveBeenCalledWith('Say hello from server! Your query: hello');
+    expect(res.send.calls.count()).toEqual(1);
   });
 });
