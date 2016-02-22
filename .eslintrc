@@ -1,10 +1,8 @@
 {
   "extends": [
     "eslint:recommended",
-    "angular"
     ],
   "env": {
-    "es6": true,
     "browser": true,
     "node": true,
     "jasmine": true,
@@ -14,6 +12,7 @@
     "no-dupe-args": 2,
     "no-dupe-keys": 2,
     "no-duplicate-case": 2,
+    "no-console": 1,
     "no-unreachable": 2,
     "valid-typeof": 2,
     "indent": [2,2],
@@ -31,6 +30,6 @@
     "no-trailing-spaces": 2,
     "space-after-keywords": 2,
     "strict": [2, "global"],
-    "no-undef": 2
+    "no-undef": 1
   }
 }

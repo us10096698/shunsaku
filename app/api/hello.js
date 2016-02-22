@@ -5,5 +5,5 @@ function say(req, res) {
 }
 
 module.exports = {
- say: say
-}
+  say: say
+};

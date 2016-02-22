@@ -39,7 +39,7 @@ gulp.task('unit', function() {
   runSequence('jasmine', 'karma');
 });
 
-gulp.task('karma-build', function(){
+gulp.task('karma-build', function() {
   gulp.src(__dirname + '/karma.conf.js')
     .pipe(wiredep({
       fileTypes: {
