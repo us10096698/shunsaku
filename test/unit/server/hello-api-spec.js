@@ -1,5 +1,5 @@
 'use strict';
-var hello = require('../../app/api/hello');
+var hello = require('../../../src/server/api/hello-api');
 
 describe('hello API', function() {
   var req, res;

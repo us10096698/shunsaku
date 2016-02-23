@@ -1,6 +1,5 @@
 node_modules
-public/components
-public/css
+public
 *.iml
 .idea
 *.log

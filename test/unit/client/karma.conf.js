@@ -2,18 +2,18 @@
 
 module.exports = function(config) {
   config.set({
-    basePath: '',
+    basePath: '../../../',
     frameworks: ['jasmine'],
     files: [
       // bower:js
-      'public/components/jquery/dist/jquery.js',
-      'public/components/angular/angular.js',
+      'public/lib/jquery/dist/jquery.js',
+      'public/lib/angular/angular.js',
       // endbower
-      'public/components/angular-mocks/angular-mocks.js',
+      'public/lib/angular-mocks/angular-mocks.js',
       'public/*.js',
       'public/controllers/*.js',
       'public/services/*.js',
-      'test/client/*Spec.js'
+      'test/unit/client/*-spec.js'
     ],
     exclude: [
     ],
@@ -25,7 +25,7 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
     autoWatch: false,
     browsers: ['PhantomJS'],
-    singleRun: false,
+    singleRun: true,
     concurrency: Infinity
   });
 };

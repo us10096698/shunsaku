@@ -7,16 +7,16 @@ if [ $# -lt 1 ]; then
 fi
 
 set -x
-cd `dirname $0`/..
+cd `dirname $0`/../..
 APPNAME=$1
 
 for file in "package.json\
   manifest.yml\
   bower.json\
-  public/index.html\
-  public/app.js\
-  public/controllers/helloCtrl.js\
-  test/client/helloCtrlSpec.js"
+  src/client/index.html\
+  src/client/app.js\
+  src/client/controllers/hello-ctrl.js\
+  test/unit/client/hello-ctrl-spec.js"
 do 
   sed -i "" "s/myapp/$APPNAME/g" $file
 done
