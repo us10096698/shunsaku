@@ -118,7 +118,7 @@ function syncBrowser() {
   ], ['copyAssets']);
   gulp.watch( __dirname + '/src/client/index.html', ['compileIndex']);
   gulp.watch( __dirname + '/src/client/js/**/*.js', ['compileJs']);
-  gulp.watch( __dirname + '/public/index.html').on('change', browserSync.reload);
+  gulp.watch( __dirname + '/public/**/*.html').on('change', browserSync.reload);
 }
 
 function runProtractor() {

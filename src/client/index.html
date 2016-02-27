@@ -10,14 +10,10 @@
   <title>template app</title>
 
 </head>
-<body ng-controller="HelloController as vm">
+<body>
 
   <div id="greeting"><h2>hello, world!</h2></div>
-
-  <button class="btn btn-default" id="call" ng-click="vm.setTagline('Did you call me?')">Angular function call</button>
-  <button class="btn btn-default" id="ajaxcall" ng-click="vm.process('Did you call me?')">Backend service (Express) call</button>
-
-  <h3 id="tagline">{{ vm.tagline }}</h3>
+  <div ui-view></div>
 
   <!-- bower:js -->
   <!-- endbower -->

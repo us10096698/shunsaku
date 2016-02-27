@@ -8,6 +8,7 @@ module.exports = function(config) {
       // bower:js
       'public/lib/jquery/dist/jquery.js',
       'public/lib/angular/angular.js',
+      'public/lib/angular-ui-router/release/angular-ui-router.js',
       // endbower
       'public/lib/angular-mocks/angular-mocks.js',
       'public/js/**/*.js',
