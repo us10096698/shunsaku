@@ -16,8 +16,9 @@ gulp.task('stop', 'Stop server', stop);
 gulp.task('bower', 'Install Bower dependencies', bower);
 gulp.task('clean', 'Remove published client-side files',  clean);
 gulp.task('copyAssets', 'Copy client-side files', copyAssets);
-gulp.task('sass', 'Compile SASS', compileSass);
-gulp.task('compileIndex', 'Generate index.html', compileIndex);
+gulp.task('compileCss', 'Compile SASS files', compileCss);
+gulp.task('compileJs', 'Compile Javascript files', compileJs);
+gulp.task('compileIndex', 'Compile index.html', compileIndex);
 gulp.task('browser-sync', 'Watch source files and reload browser automatically', syncBrowser);
 gulp.task('protractor', 'Run Protractor', ['webdriver_update'], runProtractor);
 gulp.task('webdriver_update', 'Update WebDriver', $.protractor.webdriver_update);
@@ -29,7 +30,8 @@ gulp.task('lint', 'Execute ESLint analysis', lint);
 // *************** Task Chain ********************
 
 gulp.task('build', 'Publish client-side files', function(done) {
-  runSequence('clean', 'copyAssets', ['bower', 'sass'], 'compileIndex', done);
+  runSequence('clean', ['copyAssets', 'compileJs'],
+      ['bower', 'compileCss'], 'compileIndex', done);
 });
 
 gulp.task('alltest', 'Execute all tests', function(done) {
@@ -44,6 +46,7 @@ gulp.task('unit', 'Execute overall unit tests', function(done) {
   runSequence('unit:server', 'unit:client', done);
 });
 
+
 // ***************** Implementaions *********************
 
 function start(done) {
@@ -55,7 +58,7 @@ function stop() {
 }
 
 function clean(done) {
-  return del( __dirname + '/../public', done);
+  return del( __dirname + '/public', done);
 }
 
 function bower() {
@@ -65,27 +68,35 @@ function bower() {
 function copyAssets() {
   return gulp.src([
     __dirname + '/src/client/**',
-    '!' + __dirname + '/src/client/sass',
+    '!' + __dirname + '/src/client/js{,/**}',
+    '!' + __dirname + '/src/client/sass{,/**}',
     '!' + __dirname + '/src/client/index.html'
   ])
   .pipe(gulp.dest( __dirname + '/public'))
   .pipe(browserSync.stream());
 }
 
-function compileSass() {
+function compileJs() {
+  return gulp.src(__dirname + '/src/client/js/**/*.js')
+    .pipe(isProduction() ? $.stripDebug() : $.util.noop())
+    .pipe(isProduction() ? $.uglify() : $.util.noop())
+    .pipe(gulp.dest(__dirname + '/public/js/'))
+    .pipe(isProduction() ? $.util.noop() : browserSync.stream());
+}
+
+function compileCss() {
   return gulp.src( __dirname + '/src/client/sass/**/*.scss')
     .pipe($.sass().on('error', $.sass.logError))
-    .pipe(gulp.dest( __dirname + '/public/css/' ))
-    .pipe(browserSync.stream());
+    .pipe(isProduction() ? $.minifyCss() : $.util.noop())
+    .pipe(gulp.dest( __dirname + '/public/css/'))
+    .pipe(isProduction() ? $.util.noop() : browserSync.stream());
 }
 
 function compileIndex() {
   return gulp.src( __dirname + '/src/client/index.html')
     .pipe(wiredep({ignorePath: '../../public'}))
     .pipe($.inject(gulp.src([
-      __dirname + '/public/*.js',
-      __dirname + '/public/controllers/**/*.js',
-      __dirname + '/public/services/**/*.js',
+      __dirname + '/public/js/**/*.js',
       __dirname + '/public/css/**/*.css'
     ]), { ignorePath: '../../public', relative: true }))
     .pipe(gulp.dest( __dirname + '/public/'));
@@ -98,13 +109,15 @@ function syncBrowser() {
     open: false
   });
 
-  gulp.watch( __dirname + '/src/client/sass/**/*.scss', ['sass']);
+  gulp.watch( __dirname + '/src/client/sass/**/*.scss', ['compileCss']);
   gulp.watch([
     __dirname + '/src/client/**',
+    '!' + __dirname + '/src/client/js',
     '!' + __dirname + '/src/client/sass',
     '!' + __dirname + '/src/client/index.html'
   ], ['copyAssets']);
   gulp.watch( __dirname + '/src/client/index.html', ['compileIndex']);
+  gulp.watch( __dirname + '/src/client/js/**/*.js', ['compileJs']);
   gulp.watch( __dirname + '/public/index.html').on('change', browserSync.reload);
 }
 
@@ -148,12 +161,16 @@ function karmaBuild() {
 }
 
 function lint() {
-  return gulp.src([
-    '**/*.js',
-    '!' + __dirname + '/public/lib/**',
-    '!' + __dirname + '/node_modules/**'
-  ])
+  return gulp.src(__dirname + '/src/**/*.js')
   .pipe($.eslint())
   .pipe($.eslint.format())
   .pipe($.eslint.failAfterError());
 }
+
+function isProduction() {
+  if (process.env.NODE_ENV == 'production') {
+    return true;
+  }
+  return false;
+}
+

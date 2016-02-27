@@ -36,6 +36,7 @@ __NOTE__: You have to target and log in to the PaaS before you push.
 
 ```
 $ cf /path/to/boilerplate
+$ NODE_ENV=production gulp build
 $ cf push -f manifest.yml
 ```
 
