@@ -14,8 +14,8 @@ for file in "package.json\
   manifest.yml\
   bower.json\
   src/client/index.html\
-  src/client/app.js\
-  src/client/controllers/hello-ctrl.js\
+  src/client/js/app.js\
+  src/client/js/controllers/hello-ctrl.js\
   test/unit/client/hello-ctrl-spec.js"
 do 
   sed -i "" "s/myapp/$APPNAME/g" $file
