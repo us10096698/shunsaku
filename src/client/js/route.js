@@ -7,10 +7,10 @@ function routeConfig($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('hello', {
+    .state('t2s', {
       url: '/',
-      templateUrl: '/views/hello.html',
-      controller: HelloController,
+      templateUrl: '/views/t2s.html',
+      controller: T2sController,
       controllerAs: 'vm'
     });
 }

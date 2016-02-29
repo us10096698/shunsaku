@@ -3,4 +3,5 @@ public
 *.iml
 .idea
 *.log
+src/scripts/exportenv.sh
 

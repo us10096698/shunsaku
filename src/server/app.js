@@ -3,7 +3,7 @@
 var express        = require('express'),
     bodyParser     = require('body-parser'),
     methodOverride = require('method-override'),
-    helloRoute     = require(__dirname + '/routes/hello-route'),
+    t2sRoute       = require(__dirname + '/routes/t2s-route'),
     path           = require('path'),
     app            = express(),
     PORT           = process.env.PORT || 3000;
@@ -18,7 +18,7 @@ function start(done) {
     app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
     app.use(methodOverride());
 
-    app.use('/api/hello', helloRoute);
+    app.use('/api/t2s', new t2sRoute.t2sRouter().router);
 
     app.get('*', function(req, res) {
       res.sendFile(PUBLISH_PATH + '/index.html');

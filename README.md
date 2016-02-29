@@ -1,10 +1,10 @@
-Boilerplate
+Shunsaku
 ===
-[![Build Status](https://travis-ci.org/us10096698/boilerplate.svg?branch=master)](https://travis-ci.org/us10096698/boilerplate)
-![Npm Status](https://david-dm.org/us10096698/boilerplate.svg)
+[![Build Status](https://travis-ci.org/us10096698/shunsaku.svg?branch=master)](https://travis-ci.org/us10096698/shunsaku)
+![Npm Status](https://david-dm.org/us10096698/shunsaku.svg)
 
-A minimum-viable Node.js(Express) + Angular webapp template with tests
-+ [Pivotal Tracker project page](https://www.pivotaltracker.com/n/projects/1461010)
+An English training(fungo) application (w/ Watson Text-to-Speech)
++ [Pivotal Tracker project page](https://www.pivotaltracker.com/n/projects/1461394)
 
 ## Prerequisites
 + `node` installed
@@ -17,9 +17,8 @@ A minimum-viable Node.js(Express) + Angular webapp template with tests
 
 ## Quickstart
 ```
-$ git clone https://github.com/us10096698/boilerplate.git
-$ cd /path/to/boilerplate
-& ./src/scripts/init.sh <APPNAME>
+$ git clone https://github.com/us10096698/shunsaku.git
+$ cd /path/to/shunsaku
 $ npm i && bower i
 $ npm start 
 ```
@@ -35,7 +34,7 @@ If you have an account of Cloud Foundry based PaaS, you can deploy the app on it
 __NOTE__: You have to target and log in to the PaaS before you push.
 
 ```
-$ cf /path/to/boilerplate
+$ cf /path/to/shunsaku
 $ NODE_ENV=production gulp build
 $ cf push -f manifest.yml
 ```

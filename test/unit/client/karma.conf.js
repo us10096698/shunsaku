@@ -9,6 +9,7 @@ module.exports = function(config) {
       'public/lib/jquery/dist/jquery.js',
       'public/lib/angular/angular.js',
       'public/lib/angular-ui-router/release/angular-ui-router.js',
+      'public/lib/angular-audio/app/angular.audio.js',
       // endbower
       'public/lib/angular-mocks/angular-mocks.js',
       'public/js/**/*.js',

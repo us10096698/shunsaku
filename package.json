@@ -27,15 +27,18 @@
     "karma": "^0.13.14",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^1.0.0",
+    "nock": "^7.2.2",
     "phantomjs-prebuilt": "^2.1.4",
     "request": "^2.65.0",
     "run-sequence": "^1.1.5",
     "wiredep": "^3.0.0"
   },
   "dependencies": {
-    "bower": "^1.6.3",
-    "method-override": "^2.3.5",
     "body-parser": "^1.14.1",
-    "express": "^4.13.3"
+    "bower": "^1.6.3",
+    "cfenv": "^1.0.3",
+    "express": "^4.13.3",
+    "method-override": "^2.3.5",
+    "q": "^1.4.1"
   }
 }
