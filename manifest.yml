@@ -1,6 +1,6 @@
 ---
 applications:
-- name: myapp
+- name: shunsaku
   memory: 128M
   command: npm start
   env:

@@ -1,7 +1,7 @@
 'use strict';
 
 describe('HelloController', function() {
-  beforeEach(module('myapp'));
+  beforeEach(module('shunsaku'));
 
   var $controller, $httpBackend;
 

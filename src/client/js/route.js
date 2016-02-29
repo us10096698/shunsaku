@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myapp')
+angular.module('shunsaku')
   .config(routeConfig);
 
 function routeConfig($stateProvider, $urlRouterProvider) {

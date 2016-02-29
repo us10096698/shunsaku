@@ -1,5 +1,5 @@
 {
-  "name": "myapp",
+  "name": "shunsaku",
   "description": "a minimum-viable express+angular app with tests",
   "scripts": {
     "start": "node src/scripts/start.js",

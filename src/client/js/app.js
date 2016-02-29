@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('myapp', ['ui.router']);
+angular.module('shunsaku', ['ui.router']);
