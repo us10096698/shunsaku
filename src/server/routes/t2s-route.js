@@ -10,9 +10,16 @@ function t2sRouter() {
   var manager = new t2sManager();
 
   router.post('/', speechAText);
+  router.get('/speakers', getAvailableSpeakers);
 
   function speechAText(req, res) {
     Q.when(manager.speechAText(req.body)).then(function(data) {
+      res.send(data);
+    });
+  }
+
+  function getAvailableSpeakers(req, res) {
+    Q.when(manager.getAvailableSpeakers()).then(function(data) {
       res.send(data);
     });
   }

@@ -1,2 +1,75 @@
-<textarea ng-model='vm.text'></textarea>
-<div class="btn" ng-click="vm.speechAText()">Speech!</h3>
+<div class="container-fluid" ng-init="vm.getAvailableSpeakers()">
+  <div class="row">
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Add a script</h3>
+      </div>
+
+      <div class="panel-body">
+        <div class="form-horizontal">
+          <div class="form-group">
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="firstText" ng-model='vm.firstText.sentence' placeholder="First text here"></input>
+            </div>
+      
+            <div class="col-md-2">
+              <div id="availableSpeakers" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Speaker<span class="caret"></span>
+              </div>
+              <ul class="dropdown-menu" aria-labelledby="availableSpeakers">
+                <li ng-repeat='s in vm.speakers' ng-click='vm.setSpeaker.first(s)'><a>{{ s }}</a></li>
+              </ul>
+            </div>
+            <p class="form-control-static col-md-2"> {{ vm.firstText.speaker || "Choose a spaeker"}}</p>
+            <div class="col-md-2">
+              <div class="btn btn-primary btn-sm" ng-click="vm.speechAText(vm.firstText.sentence)">Speech!</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="secondText" ng-model='vm.secondText.sentence' placeholder="Second text here"></input>
+            </div>
+            <div class="col-md-2">
+              <div id="availableSpeakers2" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Speaker
+                <span class="caret"></span>
+              </div>
+              <ul class="dropdown-menu" aria-labelledby="availableSpeakers2">
+                <li ng-repeat='s in vm.speakers' ng-click='vm.setSpeaker.second(s)'><a>{{ s }}</a></li>
+              </ul>
+            </div>
+            <p class="form-control-static col-md-2"> {{ vm.secondText.speaker || "Choose a spaeker"}}</p>
+            <div class="col-md-2">
+             <div class="btn btn-primary btn-sm" ng-click="vm.speechAText(vm.secondText.sentence)">Speech!</div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="btn btn-primary" ng-click="vm.addScript()">Add</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+  </div>
+  
+  <div class="row">
+    <table class="table">
+      <tr>
+        <th> # </th>
+        <th> first-sentence </th>
+        <th> first-voice </th>
+        <th> second-sentence </th>
+        <th> second-voice </th>
+      </tr>
+    
+      <tr ng-repeat="script in vm.scripts">
+        <td> {{ $index + 1 }} </td>
+        <td> {{ script.first.sentence }}</td>
+        <td> {{ script.first.speaker}}</td>
+        <td> {{ script.second.sentence }}</td>
+        <td> {{ script.second.speaker}}</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
