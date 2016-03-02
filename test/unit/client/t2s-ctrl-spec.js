@@ -22,7 +22,7 @@ describe('T2sController', function() {
     spyOn(controller, 'playAudio');
 
     $httpBackend.expectPOST('/api/t2s').respond(201, '');
-    controller.speechAText('hello, world');
+    controller.speechAText({text: 'hello, world', voice: 'yoshio'});
     $httpBackend.flush();
 
     expect(controller.playAudio).toHaveBeenCalled();

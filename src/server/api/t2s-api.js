@@ -6,13 +6,13 @@ var config = require('../config/config').appConfig.getInstance();
 function t2sManager(module) {
   var handler = module || require(config.t2s.protocol);
 
-  function speechAText(param) {
+  function speechAText(param, voice) {
     var data = JSON.stringify(param);
     var deferred = Q.defer();
 
     var options = {
       hostname: config.t2s.hostname,
-      path: config.t2s.path,
+      path: config.t2s.path + '?voice=' + voice,
       method: 'POST',
       port: config.t2s.port,
       auth: config.t2s.cred.username + ':' + config.t2s.cred.password,

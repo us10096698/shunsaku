@@ -17,10 +17,10 @@ describe('t2s', function() {
   it('#speechAText should return response with data from Watson t2s API', function(done) {
     var resbody = 'data';
     nock(host)
-      .post(config.t2s.path)
+      .post(config.t2s.path + '?voice=yoshio')
       .reply(201, resbody);
 
-    t2sManager.speechAText({text: 'hello'}).then(function(data) {
+    t2sManager.speechAText({text: 'hello'}, 'yoshio').then(function(data) {
       expect(data.toString()).toEqual(resbody);
       done();
     });

@@ -13,7 +13,7 @@ function t2sRouter() {
   router.get('/speakers', getAvailableSpeakers);
 
   function speechAText(req, res) {
-    Q.when(manager.speechAText(req.body)).then(function(data) {
+    Q.when(manager.speechAText(req.body, req.query.voice)).then(function(data) {
       res.send(data);
     });
   }

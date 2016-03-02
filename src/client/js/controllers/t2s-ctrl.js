@@ -44,6 +44,7 @@ function T2sController($http, ngAudio) {
     $http({
       url: '/api/t2s',
       method: 'POST',
+      params: {voice: script.speaker},
       data: JSON.stringify({text: script.sentence}),
       responseType: 'blob',
       headers: {
