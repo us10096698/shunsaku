@@ -6,13 +6,13 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
     files: [
       // bower:js
-      'public/lib/jquery/dist/jquery.js',
-      'public/lib/angular/angular.js',
-      'public/lib/bootstrap/dist/js/bootstrap.js',
-      'public/lib/angular-ui-router/release/angular-ui-router.js',
-      'public/lib/angular-audio/app/angular.audio.js',
+      'bower_components/jquery/dist/jquery.js',
+      'bower_components/angular/angular.js',
+      'bower_components/bootstrap/dist/js/bootstrap.js',
+      'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/angular-audio/app/angular.audio.js',
       // endbower
-      'public/lib/angular-mocks/angular-mocks.js',
+      'bower_components/angular-mocks/angular-mocks.js',
       'public/js/**/*.js',
       'test/unit/client/**/*-spec.js'
     ],
